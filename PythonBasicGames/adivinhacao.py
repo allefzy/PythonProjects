@@ -1,54 +1,54 @@
 import random
 
-def jogar():
+def play():
 
     print("*********************************")
-    print("Bem vindo ao jogo de Adivinhação!")
+    print("Welcome to the Guessing Game!")
     print("*********************************")
 
-    numero_secreto = random.randrange(1,101)
-    total_de_tentativas = 0
-    pontos = 1000
+    secret_number = random.randrange(1, 101)
+    total_attempts = 0
+    points = 1000
 
-    print("Qual nível de dificuldade?")
-    print("(1) Fácil (2) Médio (3) Difícil")
+    print("Choose the difficulty level:")
+    print("(1) Easy (2) Medium (3) Hard")
 
-    nivel = int(input("Defina o nível: "))
+    level = int(input("Set the level: "))
 
-    if(nivel == 1):
-        total_de_tentativas = 20
-    elif(nivel == 2):
-        total_de_tentativas = 10
+    if level == 1:
+        total_attempts = 20
+    elif level == 2:
+        total_attempts = 10
     else:
-        total_de_tentativas = 5
+        total_attempts = 5
 
-    for rodada in range(1, total_de_tentativas + 1):
-        print("Tentativa {} de {}".format(rodada, total_de_tentativas))
+    for round in range(1, total_attempts + 1):
+        print("Attempt {} of {}".format(round, total_attempts))
 
-        chute_str = input("Digite um número entre 1 e 100: ")
-        print("Você digitou " , chute_str)
-        chute = int(chute_str)
+        guess_str = input("Enter a number between 1 and 100: ")
+        print("You entered", guess_str)
+        guess = int(guess_str)
 
-        if(chute < 1 or chute > 100):
-            print("Você deve digitar um número entre 1 e 100!")
+        if guess < 1 or guess > 100:
+            print("You must enter a number between 1 and 100!")
             continue
 
-        acertou = chute == numero_secreto
-        maior   = chute > numero_secreto
-        menor   = chute < numero_secreto
+        correct = guess == secret_number
+        higher = guess > secret_number
+        lower = guess < secret_number
 
-        if(acertou):
-            print("Você acertou e fez {} pontos!".format(pontos))
+        if correct:
+            print("You got it right and scored {} points!".format(points))
             break
         else:
-            if(maior):
-                print("Você errou! O seu chute foi maior do que o número secreto.")
-            elif(menor):
-                print("Você errou! O seu chute foi menor do que o número secreto.")
-            pontos_perdidos = abs(numero_secreto - chute)
-            pontos = pontos - pontos_perdidos
+            if higher:
+                print("You missed! Your guess was higher than the secret number.")
+            elif lower:
+                print("You missed! Your guess was lower than the secret number.")
+            lost_points = abs(secret_number - guess)
+            points = points - lost_points
 
-    print("Fim do jogo")
+    print("Game over")
 
-if(__name__ == "__main__"):
-    jogar()
+if __name__ == "__main__":
+    play()
