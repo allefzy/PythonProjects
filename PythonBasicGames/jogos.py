@@ -1,21 +1,21 @@
-import forca
-import adivinhacao
+import hangman
+import guessing_game
 
-def escolhe_jogo():
+def choose_game():
     print("*********************************")
-    print("*******Escolha o seu jogo!*******")
+    print("*******Choose your game!*******")
     print("*********************************")
 
-    print("(1) Forca (2) Adivinhação")
+    print("(1) Hangman (2) Guessing Game")
 
-    jogo = int(input("Qual jogo? "))
+    game = int(input("Which game? "))
 
-    if(jogo == 1):
-        print("Jogando forca")
-        forca.jogar()
-    elif(jogo == 2):
-        print("Jogando adivinhação")
-        adivinhacao.jogar()
+    if(game == 1):
+        print("Playing Hangman")
+        hangman.play()
+    elif(game == 2):
+        print("Playing Guessing Game")
+        guessing_game.play()
 
 if(__name__ == "__main__"):
-    escolhe_jogo()
+    choose_game()
